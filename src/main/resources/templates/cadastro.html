@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Melodia - Criar conta</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div th:replace="~{fragments/layout :: header}"></div>
+
+<main>
+    <div class="auth-card">
+        <h2>Criar conta</h2>
+
+        <form th:action="@{/cadastro}" th:object="${usuario}" method="post">
+
+            <label>Nome</label>
+            <input type="text" th:field="*{nome}">
+            <p th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></p>
+
+            <label>E-mail</label>
+            <input type="email" th:field="*{email}">
+            <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+
+            <label>Senha</label>
+            <input type="password" th:field="*{senha}">
+            <p th:if="${#fields.hasErrors('senha')}" th:errors="*{senha}"></p>
+
+            <button type="submit">Criar conta</button>
+        </form>
+    </div>
+</main>
+
+<div th:replace="~{fragments/layout :: footer}"></div>
+
+</body>
+</html>

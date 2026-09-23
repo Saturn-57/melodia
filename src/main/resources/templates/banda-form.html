@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Melodia - Propor banda</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div th:replace="~{fragments/layout :: header}"></div>
+
+<main>
+    <h2>Propor nova banda</h2>
+
+    <p>Preencha os dados abaixo. Sua proposta ficará com status <strong>PENDENTE</strong> até que um
+        administrador aprove a publicação.</p>
+
+    <form th:action="@{/bandas/nova}" th:object="${banda}" method="post">
+
+        <fieldset>
+            <legend>Dados da banda</legend>
+
+            <label>Nome</label>
+            <input type="text" th:field="*{nome}">
+            <p th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></p>
+
+            <label>País</label>
+            <input type="text" th:field="*{pais}">
+
+            <label>Ano de formação</label>
+            <input type="number" th:field="*{anoFormacao}">
+
+            <label>Biografia</label>
+            <textarea th:field="*{biografia}"></textarea>
+        </fieldset>
+
+        <fieldset>
+            <legend>Integrantes</legend>
+
+            <label>Integrante 1</label>
+            <input type="text" th:field="*{integrantes[0].nome}">
+
+            <label>Integrante 2</label>
+            <input type="text" th:field="*{integrantes[1].nome}">
+
+            <label>Integrante 3</label>
+            <input type="text" th:field="*{integrantes[2].nome}">
+
+            <label>Integrante 4</label>
+            <input type="text" th:field="*{integrantes[3].nome}">
+
+            <label>Integrante 5</label>
+            <input type="text" th:field="*{integrantes[4].nome}">
+        </fieldset>
+
+        <fieldset>
+            <legend>Álbum 1</legend>
+
+            <label>Nome do álbum</label>
+            <input type="text" th:field="*{albuns[0].nome}">
+
+            <label>Ano de lançamento</label>
+            <input type="number" th:field="*{albuns[0].anoLancamento}">
+
+            <label>Música 1 - nome</label>
+            <input type="text" th:field="*{albuns[0].musicas[0].nome}">
+            <label>Música 1 - link do YouTube</label>
+            <input type="text" th:field="*{albuns[0].musicas[0].linkYoutube}">
+
+            <label>Música 2 - nome</label>
+            <input type="text" th:field="*{albuns[0].musicas[1].nome}">
+            <label>Música 2 - link do YouTube</label>
+            <input type="text" th:field="*{albuns[0].musicas[1].linkYoutube}">
+
+            <label>Música 3 - nome</label>
+            <input type="text" th:field="*{albuns[0].musicas[2].nome}">
+            <label>Música 3 - link do YouTube</label>
+            <input type="text" th:field="*{albuns[0].musicas[2].linkYoutube}">
+        </fieldset>
+
+        <fieldset>
+            <legend>Álbum 2</legend>
+
+            <label>Nome do álbum</label>
+            <input type="text" th:field="*{albuns[1].nome}">
+
+            <label>Ano de lançamento</label>
+            <input type="number" th:field="*{albuns[1].anoLancamento}">
+
+            <label>Música 1 - nome</label>
+            <input type="text" th:field="*{albuns[1].musicas[0].nome}">
+            <label>Música 1 - link do YouTube</label>
+            <input type="text" th:field="*{albuns[1].musicas[0].linkYoutube}">
+
+            <label>Música 2 - nome</label>
+            <input type="text" th:field="*{albuns[1].musicas[1].nome}">
+            <label>Música 2 - link do YouTube</label>
+            <input type="text" th:field="*{albuns[1].musicas[1].linkYoutube}">
+
+            <label>Música 3 - nome</label>
+            <input type="text" th:field="*{albuns[1].musicas[2].nome}">
+            <label>Música 3 - link do YouTube</label>
+            <input type="text" th:field="*{albuns[1].musicas[2].linkYoutube}">
+        </fieldset>
+
+        <p><small>Deixe em branco os campos de integrantes/álbuns/músicas que não quiser preencher — eles são
+            descartados automaticamente ao enviar.</small></p>
+
+        <button type="submit">Enviar proposta</button>
+    </form>
+</main>
+
+<div th:replace="~{fragments/layout :: footer}"></div>
+
+</body>
+</html>

@@ -1,0 +1,271 @@
+:root {
+    --preto: #0C0F0A;
+    --rosa: #FF206E;
+    --rosa-escuro: #D81A5C;
+    --amarelo: #FBFF12;
+    --turquesa: #41EAD4;
+    --branco: #FFFFFF;
+
+    --cinza-claro: #F2F2F2;
+    --cinza-borda: #DDDDDD;
+    --texto-suave: #555555;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    background: var(--branco);
+    color: var(--preto);
+    line-height: 1.6;
+}
+
+a {
+    color: var(--rosa);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+header {
+    background: var(--preto);
+    color: var(--branco);
+    padding: 1rem 2rem;
+}
+
+header h1 {
+    margin: 0 0 .6rem 0;
+    font-size: 1.5rem;
+}
+
+header h1 a {
+    color: var(--branco);
+}
+
+header h1 a:hover {
+    color: var(--turquesa);
+    text-decoration: none;
+}
+
+nav a {
+    color: var(--branco);
+    margin-right: 1.2rem;
+    font-weight: 600;
+    font-size: .95rem;
+}
+
+nav a:hover {
+    color: var(--rosa);
+    text-decoration: none;
+}
+
+nav form {
+    display: inline;
+}
+
+nav button {
+    background: transparent;
+    border: 1px solid var(--branco);
+    color: var(--branco);
+    padding: .3rem .8rem;
+    margin-top: 0;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+nav button:hover {
+    background: var(--rosa);
+    border-color: var(--rosa);
+}
+
+main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem;
+}
+
+h2 {
+    border-bottom: 3px solid var(--turquesa);
+    padding-bottom: .4rem;
+    display: inline-block;
+}
+
+h3, h4 {
+    color: var(--preto);
+}
+
+.hero {
+    text-align: center;
+    padding: 1.5rem 0 2.5rem;
+}
+
+.hero h2 {
+    border: none;
+    font-size: 2rem;
+}
+
+fieldset {
+    border: 1px solid var(--cinza-borda);
+    border-radius: 8px;
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+legend {
+    font-weight: 700;
+    padding: 0 .5rem;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    margin-top: .8rem;
+    margin-bottom: .3rem;
+}
+
+input, textarea {
+    width: 100%;
+    max-width: 420px;
+    padding: .55rem .7rem;
+    border: 1px solid var(--cinza-borda);
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--turquesa);
+    box-shadow: 0 0 0 3px rgba(65, 234, 212, .3);
+}
+
+textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+button, input[type="submit"] {
+    background: var(--rosa);
+    color: var(--branco);
+    border: none;
+    padding: .65rem 1.4rem;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+button:hover {
+    background: var(--rosa-escuro);
+}
+
+.btn-secundario {
+    background: transparent;
+    color: var(--preto);
+    border: 1px solid var(--preto);
+}
+
+.btn-secundario:hover {
+    background: var(--cinza-claro);
+}
+
+form p {
+    color: var(--rosa-escuro);
+    font-size: .9rem;
+    margin: .2rem 0 0 0;
+}
+
+.auth-card {
+    max-width: 380px;
+    margin: 1rem auto 0;
+    padding: 2rem;
+    border: 1px solid var(--cinza-borda);
+    border-radius: 10px;
+}
+
+.lista-bandas {
+    list-style: none;
+    padding: 0;
+}
+
+.lista-bandas li {
+    padding: .9rem 1.1rem;
+    margin-bottom: .6rem;
+    border: 1px solid var(--cinza-borda);
+    border-radius: 8px;
+    transition: border-color .15s ease;
+}
+
+.lista-bandas li:hover {
+    border-color: var(--turquesa);
+}
+
+.lista-bandas a {
+    font-weight: 700;
+    font-size: 1.05rem;
+}
+
+.card-banda {
+    border: 1px solid var(--cinza-borda);
+    border-radius: 8px;
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 1.2rem;
+}
+
+.card-banda h3 {
+    margin-top: 0;
+}
+
+.status {
+    display: inline-block;
+    padding: .2rem .7rem;
+    border-radius: 999px;
+    font-size: .8rem;
+    font-weight: 700;
+}
+
+.status-pendente {
+    background: var(--amarelo);
+    color: var(--preto);
+}
+
+.status-aprovada {
+    background: var(--turquesa);
+    color: var(--preto);
+}
+
+.status-rejeitada {
+    background: var(--cinza-claro);
+    color: var(--texto-suave);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+th, td {
+    text-align: left;
+    padding: .7rem;
+    border-bottom: 1px solid var(--cinza-borda);
+}
+
+th {
+    background: var(--cinza-claro);
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    color: var(--texto-suave);
+    font-size: .85rem;
+    border-top: 1px solid var(--cinza-borda);
+    margin-top: 3rem;
+}

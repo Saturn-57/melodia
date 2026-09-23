@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Melodia - Minhas contribuições</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div th:replace="~{fragments/layout :: header}"></div>
+
+<main>
+    <h2>Minhas contribuições</h2>
+
+    <p th:if="${mensagem}" th:text="${mensagem}"></p>
+
+    <p><a th:href="@{/bandas/nova}">Propor nova banda</a></p>
+
+    <p th:if="${#lists.isEmpty(bandas)}">Você ainda não propôs nenhuma banda.</p>
+
+    <table th:unless="${#lists.isEmpty(bandas)}">
+        <tr>
+            <th>Nome</th>
+            <th>Status</th>
+        </tr>
+        <tr th:each="banda : ${bandas}">
+            <td th:text="${banda.nome}">Nome</td>
+            <td>
+                <span class="status"
+                      th:classappend="'status-' + ${#strings.toLowerCase(banda.status)}"
+                      th:text="${banda.status}">STATUS</span>
+            </td>
+        </tr>
+    </table>
+</main>
+
+<div th:replace="~{fragments/layout :: footer}"></div>
+
+</body>
+</html>

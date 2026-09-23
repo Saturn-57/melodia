@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="'Melodia - ' + ${banda.nome}">Melodia - Banda</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div th:replace="~{fragments/layout :: header}"></div>
+
+<main>
+    <div class="card-banda">
+        <h2 th:text="${banda.nome}">Nome da banda</h2>
+
+        <p th:if="${banda.pais != null and !banda.pais.isBlank()}" th:text="'País: ' + ${banda.pais}"></p>
+        <p th:if="${banda.anoFormacao != null}" th:text="'Ano de formação: ' + ${banda.anoFormacao}"></p>
+        <p th:if="${banda.biografia != null and !banda.biografia.isBlank()}" th:text="${banda.biografia}"></p>
+
+        <h3>Integrantes</h3>
+        <p th:if="${#lists.isEmpty(banda.integrantes)}">Nenhum integrante cadastrado.</p>
+        <ul>
+            <li th:each="integrante : ${banda.integrantes}" th:text="${integrante.nome}">Integrante</li>
+        </ul>
+
+        <h3>Álbuns</h3>
+        <p th:if="${#lists.isEmpty(banda.albuns)}">Nenhum álbum cadastrado.</p>
+        <div th:each="album : ${banda.albuns}" style="margin-bottom: 1.2rem;">
+            <strong th:text="${album.nome}">Álbum</strong>
+            <span th:if="${album.anoLancamento != null}" th:text="' (' + ${album.anoLancamento} + ')'"></span>
+
+            <ul>
+                <li th:each="musica : ${album.musicas}">
+                    <a th:if="${musica.linkYoutube != null and !musica.linkYoutube.isBlank()}"
+                       th:href="${musica.linkYoutube}" target="_blank" rel="noopener"
+                       th:text="${musica.nome}">Música</a>
+                    <span th:unless="${musica.linkYoutube != null and !musica.linkYoutube.isBlank()}"
+                          th:text="${musica.nome}">Música</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</main>
+
+<div th:replace="~{fragments/layout :: footer}"></div>
+
+</body>
+</html>

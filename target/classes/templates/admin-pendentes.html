@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Melodia - Pendências</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div th:replace="~{fragments/layout :: header}"></div>
+
+<main>
+    <h2>Bandas pendentes de aprovação</h2>
+
+    <p th:if="${mensagem}" th:text="${mensagem}"></p>
+
+    <p th:if="${#lists.isEmpty(bandas)}">Não há propostas pendentes no momento.</p>
+
+    <div class="card-banda" th:each="banda : ${bandas}">
+        <h3 th:text="${banda.nome}">Nome da banda</h3>
+
+        <p th:if="${banda.pais != null and !banda.pais.isBlank()}" th:text="'País: ' + ${banda.pais}"></p>
+        <p th:if="${banda.anoFormacao != null}" th:text="'Ano de formação: ' + ${banda.anoFormacao}"></p>
+        <p th:if="${banda.usuarioCadastrante != null}"
+           th:text="'Proposta por: ' + ${banda.usuarioCadastrante.nome}"></p>
+
+        <ul>
+            <li th:each="integrante : ${banda.integrantes}" th:text="${integrante.nome}">Integrante</li>
+        </ul>
+
+        <div th:each="album : ${banda.albuns}">
+            <strong th:text="${album.nome}">Álbum</strong>
+            <ul>
+                <li th:each="musica : ${album.musicas}" th:text="${musica.nome}">Música</li>
+            </ul>
+        </div>
+
+        <form th:action="@{/admin/pendentes/{id}/aprovar(id=${banda.id})}" method="post" style="display:inline">
+            <button type="submit">Aprovar</button>
+        </form>
+        <form th:action="@{/admin/pendentes/{id}/rejeitar(id=${banda.id})}" method="post" style="display:inline">
+            <button type="submit" class="btn-secundario">Rejeitar</button>
+        </form>
+    </div>
+</main>
+
+<div th:replace="~{fragments/layout :: footer}"></div>
+
+</body>
+</html>

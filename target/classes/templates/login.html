@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Melodia - Entrar</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div th:replace="~{fragments/layout :: header}"></div>
+
+<main>
+    <div class="auth-card">
+        <h2>Entrar</h2>
+
+        <p th:if="${mensagem}" th:text="${mensagem}"></p>
+        <p th:if="${param.error}">E-mail ou senha inválidos.</p>
+        <p th:if="${param.logout}">Você saiu da sua conta.</p>
+
+        <form th:action="@{/login}" method="post">
+            <label>E-mail</label>
+            <input type="text" name="username">
+
+            <label>Senha</label>
+            <input type="password" name="password">
+
+            <button type="submit">Entrar</button>
+        </form>
+
+        <p>Ainda não tem conta? <a th:href="@{/cadastro}">Criar conta</a></p>
+    </div>
+</main>
+
+<div th:replace="~{fragments/layout :: footer}"></div>
+
+</body>
+</html>

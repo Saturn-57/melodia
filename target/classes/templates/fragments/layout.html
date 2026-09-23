@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+
+<div th:fragment="header">
+    <header>
+        <h1><a th:href="@{/}">Melodia</a></h1>
+
+        <nav>
+            <a th:href="@{/}">Home</a>
+            <a th:href="@{/buscar}">Buscar bandas</a>
+
+            <span sec:authorize="isAuthenticated()">
+                <a th:href="@{/bandas/nova}">Propor banda</a>
+                <a th:href="@{/minhas-contribuicoes}">Minhas contribuições</a>
+            </span>
+
+            <span sec:authorize="hasRole('ADMIN')">
+                <a th:href="@{/admin/pendentes}">Pendências (admin)</a>
+            </span>
+
+            <span sec:authorize="!isAuthenticated()">
+                <a th:href="@{/login}">Entrar</a>
+                <a th:href="@{/cadastro}">Criar conta</a>
+            </span>
+
+            <span sec:authorize="isAuthenticated()">
+                <form th:action="@{/logout}" method="post">
+                    <button type="submit">Sair</button>
+                </form>
+            </span>
+        </nav>
+    </header>
+</div>
+
+<div th:fragment="footer">
+    <footer>
+        <p>catálogo musical colaborativo.</p>
+    </footer>
+</div>
+
+</body>
+</html>

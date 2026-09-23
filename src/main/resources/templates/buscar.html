@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Melodia - Buscar</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div th:replace="~{fragments/layout :: header}"></div>
+
+<main>
+    <h2>Resultado da busca</h2>
+
+    <form th:action="@{/buscar}" method="get">
+        <input type="text" name="nome" th:value="${nome}" placeholder="Pesquise por uma banda...">
+        <button type="submit">Buscar</button>
+    </form>
+
+    <p th:if="${#lists.isEmpty(bandas)}">Nenhuma banda encontrada.</p>
+
+    <ul class="lista-bandas">
+        <li th:each="banda : ${bandas}">
+            <a th:href="@{/banda/{id}(id=${banda.id})}" th:text="${banda.nome}">Nome da banda</a>
+        </li>
+    </ul>
+</main>
+
+<div th:replace="~{fragments/layout :: footer}"></div>
+
+</body>
+</html>
